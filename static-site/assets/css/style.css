@@ -289,6 +289,68 @@ img {
 }
 
 /* ========================================
+   MOVIE BACKGROUND GRID
+======================================== */
+.movie-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.movie-grid {
+  position: absolute;
+  top: -30%;
+  left: -15%;
+  width: 130%;
+  height: 160%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 10px;
+  transform: rotate(-15deg) scale(1.2);
+  opacity: 0.4;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: brightness(0.6) saturate(1.1);
+}
+
+.movie-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 23, 0.4) 0%,
+    rgba(10, 14, 23, 0.7) 30%,
+    rgba(10, 14, 23, 0.9) 60%,
+    rgba(10, 14, 23, 0.98) 80%,
+    rgba(10, 14, 23, 1) 100%
+  );
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .movie-grid {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 6px;
+  }
+}
+
+/* ========================================
    HERO SECTION
 ======================================== */
 .hero {
@@ -297,16 +359,17 @@ img {
   display: flex;
   align-items: center;
   padding: 8rem 0 4rem;
-  background: var(--gradient-hero);
+  background: transparent;
   overflow: hidden;
+  z-index: 1;
 }
 
 .hero-bg-animation {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(circle at 20% 80%, hsla(0, 100%, 50%, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, hsla(30, 100%, 50%, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, hsla(0, 100%, 50%, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, hsla(30, 100%, 50%, 0.15) 0%, transparent 50%);
   animation: bgPulse 8s ease-in-out infinite;
 }
 
