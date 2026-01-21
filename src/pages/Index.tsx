@@ -1,25 +1,27 @@
-import { Header } from '@/components/landing/Header';
-import { HeroSection } from '@/components/landing/HeroSection';
-import { OfferSection } from '@/components/landing/OfferSection';
-import { FeaturesSection } from '@/components/landing/FeaturesSection';
-import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
-import { GuaranteeSection } from '@/components/landing/GuaranteeSection';
-import { FAQSection } from '@/components/landing/FAQSection';
-import { Footer } from '@/components/landing/Footer';
-import { FloatingCTA } from '@/components/landing/FloatingCTA';
+import { Header } from '@/components/product/Header';
+import { HeroSection } from '@/components/product/HeroSection';
+import { ProblemsSection } from '@/components/product/ProblemsSection';
+import { BenefitsSection } from '@/components/product/BenefitsSection';
+import { TestimonialsSection } from '@/components/product/TestimonialsSection';
+import { AuthorSection } from '@/components/product/AuthorSection';
+import { OfferSection } from '@/components/product/OfferSection';
+import { GuaranteeSection } from '@/components/product/GuaranteeSection';
+import { FAQSection } from '@/components/product/FAQSection';
+import { Footer } from '@/components/product/Footer';
 
 export default function Index() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <HeroSection />
-      <OfferSection />
-      <FeaturesSection />
+      <ProblemsSection />
+      <BenefitsSection />
       <TestimonialsSection />
+      <AuthorSection />
+      <OfferSection />
       <GuaranteeSection />
       <FAQSection />
       <Footer />
-      <FloatingCTA />
     </div>
   );
 }
