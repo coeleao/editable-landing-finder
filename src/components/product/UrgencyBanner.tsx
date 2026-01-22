@@ -1,5 +1,6 @@
 import { Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
 
 function useCountdown() {
   const getInitialTime = () => {
@@ -41,6 +42,13 @@ function useCountdown() {
 export function UrgencyBanner() {
   const { hours, minutes, seconds } = useCountdown();
 
+  const scrollToOffer = () => {
+    const element = document.getElementById('oferta');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-destructive to-destructive/90 text-destructive-foreground py-3 shadow-lg">
       <div className="container max-w-6xl mx-auto px-4">
@@ -74,6 +82,14 @@ export function UrgencyBanner() {
               </div>
             </div>
           </div>
+          
+          <Button 
+            onClick={scrollToOffer}
+            size="sm" 
+            className="bg-white text-destructive hover:bg-white/90 font-bold shadow-md"
+          >
+            Garantir Vaga
+          </Button>
         </div>
       </div>
     </div>
