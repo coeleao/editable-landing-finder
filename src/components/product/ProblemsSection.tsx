@@ -1,20 +1,20 @@
-import { Frown, TrendingDown, AlertCircle } from 'lucide-react';
+import { Wallet, Clock, AlertCircle } from 'lucide-react';
 
 const problems = [
   {
-    icon: Frown,
-    title: 'Cansado de Dietas que Não Funcionam?',
-    description: 'Você já tentou de tudo: dietas restritivas, remédios, chás milagrosos... mas o peso sempre volta.',
+    icon: Wallet,
+    title: 'Dinheiro Sempre Curto?',
+    description: 'O salário acaba antes do mês e você vive contando centavos para pagar as contas básicas.',
   },
   {
-    icon: TrendingDown,
-    title: 'Autoestima Abalada?',
-    description: 'Evita fotos, não se sente bem com suas roupas e perdeu a confiança em si mesmo.',
+    icon: Clock,
+    title: 'Trabalha Demais e Ganha Pouco?',
+    description: 'Você se dedica o dia inteiro, mas parece que nunca sobra nada no final do mês.',
   },
   {
     icon: AlertCircle,
-    title: 'Saúde em Risco?',
-    description: 'Sente cansaço, falta de disposição e preocupação com problemas de saúde futuros.',
+    title: 'Medo de Perder o Emprego?',
+    description: 'A insegurança financeira te preocupa e você sabe que precisa de uma alternativa.',
   },
 ];
 

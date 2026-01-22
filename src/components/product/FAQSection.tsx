@@ -7,16 +7,16 @@ import {
 
 const faqs = [
   {
-    question: 'O método funciona para qualquer pessoa?',
-    answer: 'Sim! O método foi desenvolvido para funcionar com qualquer pessoa, independente da idade ou condição física. As estratégias são adaptáveis ao seu estilo de vida e rotina.',
+    question: 'Preciso ter experiência para começar?',
+    answer: 'Não! O método foi criado para iniciantes. Você vai aprender do zero, passo a passo, mesmo que nunca tenha trabalhado online antes.',
   },
   {
-    question: 'Em quanto tempo verei resultados?',
-    answer: 'A maioria dos nossos alunos começa a ver resultados já nas primeiras 2 semanas. Resultados mais expressivos costumam aparecer entre 30 e 60 dias seguindo o método corretamente.',
+    question: 'Quanto preciso investir para começar?',
+    answer: 'Você pode começar com menos de R$100 ou até mesmo sem nenhum investimento inicial. Ensinamos estratégias gratuitas e pagas para todos os bolsos.',
   },
   {
-    question: 'Preciso fazer exercícios pesados?',
-    answer: 'Não! Os exercícios são simples, de apenas 15 minutos, e podem ser feitos em casa sem nenhum equipamento. São perfeitos para iniciantes.',
+    question: 'Em quanto tempo vou começar a ganhar dinheiro?',
+    answer: 'Nossos alunos mais dedicados começam a ver resultados já na primeira semana. Em média, a maioria consegue sua primeira venda em 15 a 30 dias.',
   },
   {
     question: 'Como funciona a garantia?',

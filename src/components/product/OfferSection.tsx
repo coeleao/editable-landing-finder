@@ -2,12 +2,13 @@ import { Button } from '@/components/ui/button';
 import { Check, ShieldCheck, Lock, CreditCard } from 'lucide-react';
 
 const included = [
-  'Guia Completo de Emagrecimento (PDF)',
-  '30 Receitas Fit Deliciosas',
-  'Plano de Treinos para Casa',
-  'Bônus: Acompanhamento por 30 dias',
-  'Bônus: Grupo VIP no WhatsApp',
-  'Acesso Vitalício',
+  'Método Renda Extra Completo (Acesso Digital)',
+  'Aulas Passo a Passo em Vídeo',
+  'Planilhas de Controle Financeiro',
+  'Bônus: 10 Modelos de Mensagens Prontas',
+  'Bônus: Grupo VIP de Networking',
+  'Bônus: Mentoria ao Vivo Mensal',
+  'Acesso Vitalício + Atualizações',
 ];
 
 export function OfferSection() {
