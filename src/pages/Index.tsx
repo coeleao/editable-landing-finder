@@ -8,29 +8,35 @@ import { OfferSection } from '@/components/product/OfferSection';
 import { GuaranteeSection } from '@/components/product/GuaranteeSection';
 import { FAQSection } from '@/components/product/FAQSection';
 import { Footer } from '@/components/product/Footer';
-import bgPattern from '@/assets/bg-pattern.png';
+import bgCarnival from '@/assets/bg-carnival.png';
 
 export default function Index() {
   return (
-    <div 
-      className="min-h-screen bg-background"
-      style={{
-        backgroundImage: `url(${bgPattern})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-      }}
-    >
-      <Header />
-      <HeroSection />
-      <ProblemsSection />
-      <BenefitsSection />
-      <TestimonialsSection />
-      <AuthorSection />
-      <OfferSection />
-      <GuaranteeSection />
-      <FAQSection />
-      <Footer />
+    <div className="min-h-screen bg-background relative">
+      {/* Background Pattern */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: `url(${bgCarnival})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.08,
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10">
+        <Header />
+        <HeroSection />
+        <ProblemsSection />
+        <BenefitsSection />
+        <TestimonialsSection />
+        <AuthorSection />
+        <OfferSection />
+        <GuaranteeSection />
+        <FAQSection />
+        <Footer />
+      </div>
     </div>
   );
 }

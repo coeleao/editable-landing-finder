@@ -1,22 +1,22 @@
-import problemMoney from '@/assets/problem-money.png';
-import problemOverwork from '@/assets/problem-overwork.png';
-import problemJobFear from '@/assets/problem-job-fear.png';
+import problemBloat from '@/assets/problem-bloat.png';
+import problemClothes from '@/assets/problem-clothes.png';
+import problemEnergy from '@/assets/problem-energy.png';
 
 const problems = [
   {
-    image: problemMoney,
-    title: 'Dinheiro Sempre Curto?',
-    description: 'O salário acaba antes do mês e você vive contando centavos para pagar as contas básicas.',
+    image: problemBloat,
+    title: 'Inchaço Abdominal',
+    description: 'A sensação de estar sempre estufada, mesmo comendo pouco. Parece que nada funciona.',
   },
   {
-    image: problemOverwork,
-    title: 'Trabalha Demais e Ganha Pouco?',
-    description: 'Você se dedica o dia inteiro, mas parece que nunca sobra nada no final do mês.',
+    image: problemClothes,
+    title: 'Roupas Apertadas',
+    description: 'A frustração de provar o short jeans favorito e ele simplesmente não fechar mais.',
   },
   {
-    image: problemJobFear,
-    title: 'Medo de Perder o Emprego?',
-    description: 'A insegurança financeira te preocupa e você sabe que precisa de uma alternativa.',
+    image: problemEnergy,
+    title: 'Vergonha do Corpo',
+    description: 'O medo de colocar biquíni na frente dos amigos e se sentir julgada o tempo todo.',
   },
 ];
 
@@ -26,10 +26,10 @@ export function ProblemsSection() {
       <div className="container max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
-            Você Se <span className="text-accent">Identifica</span>?
+            Cansada de se <span className="text-primary">esconder</span> nas fotos de verão?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Se você respondeu sim para alguma dessas situações, esse método foi feito para você.
+            Se você respondeu sim para alguma dessas situações, esse desafio foi feito para você.
           </p>
         </div>
 
@@ -37,7 +37,7 @@ export function ProblemsSection() {
           {problems.map((problem, index) => (
             <div
               key={index}
-              className="bg-card border border-border rounded-2xl p-8 text-center hover:border-accent/50 transition-all duration-300 hover:shadow-card"
+              className="bg-card border border-border rounded-2xl p-8 text-center hover:border-primary/50 transition-all duration-300 hover:shadow-card"
             >
               <div className="w-32 h-32 mx-auto mb-6 overflow-hidden rounded-xl">
                 <img 

@@ -3,12 +3,13 @@ import { Check, ShieldCheck, Lock, CreditCard, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const included = [
-  'Método Renda Extra Completo (Acesso Digital)',
-  'Aulas Passo a Passo em Vídeo',
-  'Planilhas de Controle Financeiro',
-  'Bônus: 10 Modelos de Mensagens Prontas',
-  'Bônus: Grupo VIP de Networking',
-  'Bônus: Mentoria ao Vivo Mensal',
+  'Desafio Seca Carnaval Completo (Acesso Digital)',
+  'Guia Detox 7 Dias com Passo a Passo',
+  'Cronograma de Chás Seca-Barriga',
+  'Lista de Compras Econômica',
+  'Bônus: Receitas de Drinks Sem Álcool',
+  'Bônus: Treinos Express de 15 Minutos',
+  'Bônus: Grupo VIP de Apoio',
   'Acesso Vitalício + Atualizações',
 ];
 
@@ -59,7 +60,7 @@ export function OfferSection() {
       <div className="container max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
-            Garanta Seu <span className="text-accent">Acesso Agora</span>
+            O Passaporte Para Sua <span className="text-primary">Melhor Versão</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
             Oferta especial por tempo limitado
@@ -88,9 +89,9 @@ export function OfferSection() {
           </div>
         </div>
 
-        <div className="bg-card border-2 border-accent rounded-3xl p-8 md:p-12 shadow-card relative overflow-hidden">
+        <div className="bg-card border-2 border-primary rounded-3xl p-8 md:p-12 shadow-card relative overflow-hidden">
           {/* Badge */}
-          <div className="absolute top-0 right-0 bg-accent text-accent-foreground px-6 py-2 rounded-bl-2xl font-bold text-sm">
+          <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-6 py-2 rounded-bl-2xl font-bold text-sm">
             MAIS VENDIDO
           </div>
 
@@ -114,19 +115,19 @@ export function OfferSection() {
 
             {/* Pricing */}
             <div className="text-center">
-              <p className="text-muted-foreground mb-2">De <span className="line-through">R$ 297,00</span></p>
+              <p className="text-muted-foreground mb-2">De <span className="line-through">R$ 197,00</span></p>
               <div className="mb-2">
                 <span className="text-sm text-muted-foreground">por apenas</span>
               </div>
               <div className="text-5xl md:text-6xl font-black text-primary mb-2">
-                R$ 97
+                R$ 67
               </div>
               <p className="text-muted-foreground mb-6">
-                ou 12x de R$ 9,70
+                ou 12x de R$ 6,70
               </p>
 
               <Button variant="cta" size="xl" className="w-full text-lg">
-                Quero Garantir Minha Vaga
+                Quero Secar Para o Carnaval
               </Button>
 
               <div className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
