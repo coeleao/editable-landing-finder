@@ -1,35 +1,35 @@
-import { CheckCircle, Utensils, Dumbbell, Brain, Clock, Heart } from 'lucide-react';
+import { CheckCircle, Smartphone, TrendingUp, Clock, Wallet, Users } from 'lucide-react';
 
 const benefits = [
   {
-    icon: Utensils,
-    title: 'Cardápio Completo',
-    description: 'Receitas simples e deliciosas para cada refeição do dia.',
+    icon: Smartphone,
+    title: 'Trabalhe do Celular',
+    description: 'Tudo que você precisa é seu smartphone e conexão com internet.',
   },
   {
-    icon: Dumbbell,
-    title: 'Exercícios Práticos',
-    description: 'Treinos de 15 minutos que você pode fazer em casa.',
-  },
-  {
-    icon: Brain,
-    title: 'Mentalidade Vencedora',
-    description: 'Técnicas para manter a motivação e não desistir.',
+    icon: TrendingUp,
+    title: 'Escale Seus Ganhos',
+    description: 'Aprenda a multiplicar seus resultados mês após mês.',
   },
   {
     icon: Clock,
-    title: 'Resultados Rápidos',
-    description: 'Veja mudanças visíveis já nas primeiras semanas.',
+    title: 'Horários Flexíveis',
+    description: 'Trabalhe quando quiser, sem chefe e sem horário fixo.',
   },
   {
-    icon: Heart,
-    title: 'Mais Saúde',
-    description: 'Melhore sua disposição, energia e qualidade de vida.',
+    icon: Wallet,
+    title: 'Baixo Investimento',
+    description: 'Comece com menos de R$100 ou até mesmo sem investir nada.',
+  },
+  {
+    icon: Users,
+    title: 'Comunidade Ativa',
+    description: 'Grupo exclusivo com suporte e networking entre alunos.',
   },
   {
     icon: CheckCircle,
-    title: 'Método Validado',
-    description: 'Baseado em ciência e aprovado por nutricionistas.',
+    title: 'Método Testado',
+    description: 'Estratégias validadas por milhares de alunos reais.',
   },
 ];
 
@@ -39,10 +39,10 @@ export function BenefitsSection() {
       <div className="container max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
-            O Que Você Vai <span className="text-primary">Aprender</span>
+            O Que Você Vai <span className="text-primary">Conquistar</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Um método completo para transformar seu corpo e sua vida
+            Um método completo para criar sua liberdade financeira
           </p>
         </div>
 

@@ -8,8 +8,8 @@ export function AuthorSection() {
             <div className="shrink-0">
               <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-primary shadow-card">
                 <img
-                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face"
-                  alt="Dra. Ana Beatriz"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face"
+                  alt="Rafael Oliveira"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -18,28 +18,28 @@ export function AuthorSection() {
             {/* Author Bio */}
             <div className="text-center md:text-left">
               <span className="text-sm font-semibold text-accent uppercase tracking-wide">
-                Conheça a Autora
+                Conheça o Mentor
               </span>
               <h3 className="text-2xl md:text-3xl font-black text-foreground mt-2 mb-4">
-                Dra. Ana Beatriz
+                Rafael Oliveira
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Nutricionista formada pela USP com mais de 15 anos de experiência em 
-                emagrecimento saudável. Já ajudou mais de 5.000 pessoas a transformarem 
-                suas vidas através de uma alimentação equilibrada e um estilo de vida ativo.
+                Empreendedor digital desde 2018, saiu de um emprego CLT que pagava R$2.500 
+                para faturar mais de R$100.000 por mês. Já ajudou mais de 2.500 pessoas a 
+                criarem suas próprias fontes de renda extra trabalhando de casa.
               </p>
               <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <span className="w-2 h-2 rounded-full bg-accent" />
-                  CRN: 12345
+                  +R$3M faturados
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <span className="w-2 h-2 rounded-full bg-accent" />
-                  +15 anos de experiência
+                  +6 anos de experiência
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <span className="w-2 h-2 rounded-full bg-accent" />
-                  +5.000 alunos
+                  +2.500 alunos
                 </div>
               </div>
             </div>

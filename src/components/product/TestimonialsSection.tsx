@@ -5,22 +5,22 @@ const testimonials = [
     name: 'Carla Mendes',
     photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
     rating: 5,
-    text: 'Perdi 12kg em 3 meses! O método é simples e fácil de seguir. Finalmente encontrei algo que funciona de verdade.',
-    result: '-12kg em 3 meses',
+    text: 'Comecei sem saber nada e hoje faturo R$4.500 por mês só com o celular! Mudou completamente minha vida financeira.',
+    result: 'R$4.500/mês',
   },
   {
-    name: 'Roberto Silva',
+    name: 'Roberto Lima',
     photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
     rating: 5,
-    text: 'Depois de anos tentando, consegui emagrecer sem passar fome. Minha energia melhorou muito também!',
-    result: '-8kg em 2 meses',
+    text: 'Estava desempregado e em 3 meses já estava ganhando mais do que no meu antigo emprego. Método incrível!',
+    result: 'R$6.200/mês',
   },
   {
-    name: 'Fernanda Costa',
+    name: 'Patrícia Souza',
     photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
     rating: 5,
-    text: 'O melhor investimento que fiz em mim mesma. As receitas são deliciosas e práticas para o dia a dia.',
-    result: '-15kg em 4 meses',
+    text: 'Mãe de 2 filhos, consigo trabalhar de casa nos meus horários. A renda extra paga as atividades das crianças!',
+    result: 'R$3.800/mês',
   },
 ];
 
@@ -30,10 +30,10 @@ export function TestimonialsSection() {
       <div className="container max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
-            Histórias de <span className="text-accent">Transformação</span>
+            Alunos <span className="text-accent">Faturando</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Veja o que nossos alunos estão conquistando
+            Veja quanto nossos alunos estão ganhando por mês
           </p>
         </div>
 
