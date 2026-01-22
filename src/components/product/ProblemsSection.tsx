@@ -1,18 +1,20 @@
-import { Wallet, Clock, AlertCircle } from 'lucide-react';
+import problemMoney from '@/assets/problem-money.png';
+import problemOverwork from '@/assets/problem-overwork.png';
+import problemJobFear from '@/assets/problem-job-fear.png';
 
 const problems = [
   {
-    icon: Wallet,
+    image: problemMoney,
     title: 'Dinheiro Sempre Curto?',
     description: 'O salário acaba antes do mês e você vive contando centavos para pagar as contas básicas.',
   },
   {
-    icon: Clock,
+    image: problemOverwork,
     title: 'Trabalha Demais e Ganha Pouco?',
     description: 'Você se dedica o dia inteiro, mas parece que nunca sobra nada no final do mês.',
   },
   {
-    icon: AlertCircle,
+    image: problemJobFear,
     title: 'Medo de Perder o Emprego?',
     description: 'A insegurança financeira te preocupa e você sabe que precisa de uma alternativa.',
   },
@@ -32,25 +34,26 @@ export function ProblemsSection() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {problems.map((problem, index) => {
-            const Icon = problem.icon;
-            return (
-              <div
-                key={index}
-                className="bg-card border border-border rounded-2xl p-8 text-center hover:border-accent/50 transition-all duration-300 hover:shadow-card"
-              >
-                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
-                  <Icon className="h-8 w-8 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">
-                  {problem.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {problem.description}
-                </p>
+          {problems.map((problem, index) => (
+            <div
+              key={index}
+              className="bg-card border border-border rounded-2xl p-8 text-center hover:border-accent/50 transition-all duration-300 hover:shadow-card"
+            >
+              <div className="w-32 h-32 mx-auto mb-6 overflow-hidden rounded-xl">
+                <img 
+                  src={problem.image} 
+                  alt={problem.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            );
-          })}
+              <h3 className="text-xl font-bold text-foreground mb-4">
+                {problem.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {problem.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
