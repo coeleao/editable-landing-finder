@@ -8,10 +8,19 @@ import { OfferSection } from '@/components/product/OfferSection';
 import { GuaranteeSection } from '@/components/product/GuaranteeSection';
 import { FAQSection } from '@/components/product/FAQSection';
 import { Footer } from '@/components/product/Footer';
+import bgPattern from '@/assets/bg-pattern.png';
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-background">
+    <div 
+      className="min-h-screen bg-background"
+      style={{
+        backgroundImage: `url(${bgPattern})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
       <Header />
       <HeroSection />
       <ProblemsSection />
