@@ -8,22 +8,19 @@ import { OfferSection } from '@/components/product/OfferSection';
 import { GuaranteeSection } from '@/components/product/GuaranteeSection';
 import { FAQSection } from '@/components/product/FAQSection';
 import { Footer } from '@/components/product/Footer';
-import { UrgencyBanner } from '@/components/product/UrgencyBanner';
 import bgPattern from '@/assets/bg-pattern.png';
 
 export default function Index() {
   return (
-    <>
-      <UrgencyBanner />
-      <div 
-        className="min-h-screen bg-background pt-20 md:pt-16"
-        style={{
-          backgroundImage: `url(${bgPattern})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-        }}
-      >
+    <div 
+      className="min-h-screen bg-background"
+      style={{
+        backgroundImage: `url(${bgPattern})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
       <Header />
       <HeroSection />
       <ProblemsSection />
@@ -32,9 +29,8 @@ export default function Index() {
       <AuthorSection />
       <OfferSection />
       <GuaranteeSection />
-        <FAQSection />
-        <Footer />
-      </div>
-    </>
+      <FAQSection />
+      <Footer />
+    </div>
   );
 }
