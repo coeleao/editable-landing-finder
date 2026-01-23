@@ -1,3 +1,4 @@
+import { TopBanner } from '@/components/product/TopBanner';
 import { Header } from '@/components/product/Header';
 import { HeroSection } from '@/components/product/HeroSection';
 import { ProblemsSection } from '@/components/product/ProblemsSection';
@@ -26,6 +27,7 @@ export default function Index() {
       
       {/* Content */}
       <div className="relative z-10">
+        <TopBanner />
         <Header />
         <HeroSection />
         <ProblemsSection />
