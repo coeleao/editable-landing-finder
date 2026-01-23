@@ -58,20 +58,27 @@ export function HeroSection() {
 
         {/* Video Section */}
         <div className="relative max-w-3xl mx-auto">
-          {/* Live Viewers Badge */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg">
+          {/* Live Viewers Badge - positioned at top of video */}
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-gray-800 text-white px-5 py-2.5 rounded-full shadow-xl border border-gray-700">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-lime"></span>
             </span>
-            <Users className="h-4 w-4 text-lime" />
-            <span className="font-semibold text-sm">
-              <span className="text-lime">1.247</span> pessoas assistindo agora
-            </span>
+            <div className="flex items-center gap-1.5">
+              <div className="flex -space-x-1">
+                <div className="w-5 h-5 rounded-full bg-lime/20 flex items-center justify-center">
+                  <Users className="h-3 w-3 text-lime" />
+                </div>
+              </div>
+              <span className="font-bold text-sm">
+                <span className="text-lime">1.247</span>
+                <span className="text-gray-300 font-normal ml-1">pessoas assistindo agora</span>
+              </span>
+            </div>
           </div>
 
           {/* Video Container */}
-          <div className="aspect-video bg-card rounded-2xl shadow-card border-4 border-primary/20 overflow-hidden">
+          <div className="aspect-video bg-card rounded-2xl shadow-card border-4 border-primary/20 overflow-hidden relative">
             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/5 to-accent/5">
               <button className="w-20 h-20 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center shadow-glow hover:shadow-glow-strong transition-all duration-300 hover:scale-105">
                 <Play className="h-8 w-8 text-white ml-1" fill="currentColor" />
