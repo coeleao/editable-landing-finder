@@ -2,21 +2,21 @@ import { Star, Sparkles, CheckCircle } from 'lucide-react';
 
 const testimonials = [
   {
-    initial: 'C',
+    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
     name: 'Cláudia M.',
     location: 'São Paulo, SP',
     result: 'Perdeu 4,5kg em 12 dias',
     text: 'Eu não acreditava que seria possível! Em menos de 2 semanas já estava usando meu biquíni favorito. O método é simples e fácil de seguir.',
   },
   {
-    initial: 'F',
+    photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
     name: 'Fernanda S.',
     location: 'Rio de Janeiro, RJ',
     result: 'Perdeu 5,2kg em 15 dias',
     text: 'O melhor investimento que fiz! Consegui entrar no vestido do Carnaval que tinha desistido. Minhas amigas não acreditaram na transformação.',
   },
   {
-    initial: 'J',
+    photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
     name: 'Juliana R.',
     location: 'Belo Horizonte, MG',
     result: 'Perdeu 3,8kg em 10 dias',
@@ -50,10 +50,12 @@ export function TestimonialsSection() {
 
               {/* Header */}
               <div className="flex items-start gap-4 mb-4">
-                {/* Avatar Initial */}
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg shrink-0">
-                  {testimonial.initial}
-                </div>
+                {/* Avatar Photo */}
+                <img 
+                  src={testimonial.photo} 
+                  alt={testimonial.name}
+                  className="w-12 h-12 rounded-full object-cover border-2 border-primary shrink-0"
+                />
                 
                 <div>
                   <div className="flex items-center gap-2">
