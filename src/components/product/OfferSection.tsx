@@ -3,13 +3,13 @@ import { Check, ShieldCheck, Lock, CreditCard, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const included = [
-  'Desafio Seca Carnaval Completo (Acesso Digital)',
-  'Guia Detox 7 Dias com Passo a Passo',
-  'Cronograma de Chás Seca-Barriga',
-  'Lista de Compras Econômica',
-  'Bônus: Receitas de Drinks Sem Álcool',
-  'Bônus: Treinos Express de 15 Minutos',
-  'Bônus: Grupo VIP de Apoio',
+  'Treinamento Completo Renda Extra Online',
+  'Módulo de Vendas pelo WhatsApp',
+  'Templates de Copy Prontos para Usar',
+  'Planilha de Controle Financeiro',
+  'Bônus: Curso de Tráfego Pago',
+  'Bônus: Mentoria em Grupo Semanal',
+  'Bônus: Comunidade VIP no Telegram',
   'Acesso Vitalício + Atualizações',
 ];
 
@@ -21,7 +21,6 @@ function useCountdown() {
       const remaining = Math.max(0, endTime - Date.now());
       if (remaining > 0) return remaining;
     }
-    // Set 24 hours countdown
     const endTime = Date.now() + 24 * 60 * 60 * 1000;
     localStorage.setItem('countdown-end', endTime.toString());
     return 24 * 60 * 60 * 1000;
@@ -33,7 +32,6 @@ function useCountdown() {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1000) {
-          // Reset countdown when it reaches 0
           const newEndTime = Date.now() + 24 * 60 * 60 * 1000;
           localStorage.setItem('countdown-end', newEndTime.toString());
           return 24 * 60 * 60 * 1000;
@@ -60,7 +58,7 @@ export function OfferSection() {
       <div className="container max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
-            O Passaporte Para Sua <span className="text-primary">Melhor Versão</span>
+            Sua <span className="text-primary">Liberdade Financeira</span> Começa Aqui
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
             Oferta especial por tempo limitado
@@ -115,19 +113,19 @@ export function OfferSection() {
 
             {/* Pricing */}
             <div className="text-center">
-              <p className="text-muted-foreground mb-2">De <span className="line-through">R$ 197,00</span></p>
+              <p className="text-muted-foreground mb-2">De <span className="line-through">R$ 497,00</span></p>
               <div className="mb-2">
                 <span className="text-sm text-muted-foreground">por apenas</span>
               </div>
               <div className="text-5xl md:text-6xl font-black text-primary mb-2">
-                R$ 67
+                R$ 97
               </div>
               <p className="text-muted-foreground mb-6">
-                ou 12x de R$ 6,70
+                ou 12x de R$ 9,70
               </p>
 
               <Button variant="cta" size="xl" className="w-full text-lg">
-                Quero Secar Para o Carnaval
+                Quero Começar a Faturar
               </Button>
 
               <div className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">

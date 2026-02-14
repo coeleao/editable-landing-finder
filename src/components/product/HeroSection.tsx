@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Play, Check, Users, Star, Zap, UtensilsCrossed, Timer } from 'lucide-react';
+import { Play, Check, Users, Star, Smartphone, DollarSign, Clock } from 'lucide-react';
 
 export function HeroSection() {
   return (
@@ -13,7 +13,7 @@ export function HeroSection() {
               <Users className="h-5 w-5" />
               <Users className="h-5 w-5" />
             </div>
-            <span className="font-semibold text-sm md:text-base">+2.847 mulheres já transformadas</span>
+            <span className="font-semibold text-sm md:text-base">+5.847 alunos já faturando</span>
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -25,25 +25,25 @@ export function HeroSection() {
         {/* Main Headline */}
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
-            <span className="text-primary">Seque até 5kg em 15 dias</span>
+            <span className="text-primary">Ganhe de R$3.000 a R$10.000</span>
             <br />
-            <span className="text-foreground">e entre na sua melhor roupa</span>
+            <span className="text-foreground">trabalhando do celular</span>
             <br />
-            <span className="text-foreground">neste Carnaval</span>
+            <span className="text-foreground">sem sair de casa</span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            O protocolo rápido de desintoxicação para desinchar a barriga 
-            e recuperar sua autoestima antes da folia.
+            O método comprovado para criar sua renda extra online 
+            mesmo sem experiência e sem precisar investir alto.
           </p>
         </div>
 
         {/* Benefit Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
           {[
-            { icon: UtensilsCrossed, text: 'Sem passar fome', color: 'text-primary' },
-            { icon: Zap, text: 'Cardápio de Drinks Fit', color: 'text-accent' },
-            { icon: Timer, text: 'Treinos rápidos de 15min', color: 'text-primary' },
+            { icon: Smartphone, text: 'Direto do celular', color: 'text-primary' },
+            { icon: DollarSign, text: 'Resultados rápidos', color: 'text-accent' },
+            { icon: Clock, text: 'Menos de 2h por dia', color: 'text-primary' },
           ].map((item, index) => (
             <div 
               key={index} 
@@ -51,27 +51,27 @@ export function HeroSection() {
             >
               <item.icon className={`h-6 w-6 ${item.color}`} />
               <span className="font-medium text-foreground">{item.text}</span>
-              <Check className="h-5 w-5 text-lime" />
+              <Check className="h-5 w-5 text-green-check" />
             </div>
           ))}
         </div>
 
         {/* Video Section */}
         <div className="relative max-w-3xl mx-auto">
-          {/* Live Viewers Badge - positioned at top of video */}
+          {/* Live Viewers Badge */}
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-gray-800 text-white px-5 py-2.5 rounded-full shadow-xl border border-gray-700">
             <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-lime"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-check opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-check"></span>
             </span>
             <div className="flex items-center gap-1.5">
               <div className="flex -space-x-1">
-                <div className="w-5 h-5 rounded-full bg-lime/20 flex items-center justify-center">
-                  <Users className="h-3 w-3 text-lime" />
+                <div className="w-5 h-5 rounded-full bg-green-check/20 flex items-center justify-center">
+                  <Users className="h-3 w-3 text-green-check" />
                 </div>
               </div>
               <span className="font-bold text-sm">
-                <span className="text-lime">1.247</span>
+                <span className="text-green-check">1.247</span>
                 <span className="text-gray-300 font-normal ml-1">pessoas assistindo agora</span>
               </span>
             </div>
@@ -89,7 +89,7 @@ export function HeroSection() {
           {/* Video Caption */}
           <div className="mt-4 text-center">
             <p className="text-muted-foreground">
-              👙 Veja como a Cláudia recuperou o corpo de praia em 2 semanas
+              💰 Veja como o Rafael saiu do zero e faturou R$8.500 no primeiro mês
             </p>
           </div>
         </div>
@@ -97,7 +97,7 @@ export function HeroSection() {
         {/* CTA Button */}
         <div className="text-center mt-10">
           <Button size="lg" variant="gradient" className="text-lg px-10 py-7 shadow-glow hover:shadow-glow-strong transition-all duration-300 animate-pulse">
-            Quero Secar Para o Carnaval
+            Quero Começar a Faturar Agora
           </Button>
         </div>
       </div>

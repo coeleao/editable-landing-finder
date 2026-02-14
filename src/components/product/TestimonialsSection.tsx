@@ -2,25 +2,25 @@ import { Star, Sparkles, CheckCircle } from 'lucide-react';
 
 const testimonials = [
   {
-    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
-    name: 'Cláudia M.',
+    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+    name: 'Rafael M.',
     location: 'São Paulo, SP',
-    result: 'Perdeu 4,5kg em 12 dias',
-    text: 'Eu não acreditava que seria possível! Em menos de 2 semanas já estava usando meu biquíni favorito. O método é simples e fácil de seguir.',
+    result: 'Faturou R$8.500 no 1º mês',
+    text: 'Eu era cético no começo, mas em 30 dias já tinha pago todas as minhas dívidas. O método é simples e qualquer um consegue seguir.',
   },
   {
-    photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
     name: 'Fernanda S.',
     location: 'Rio de Janeiro, RJ',
-    result: 'Perdeu 5,2kg em 15 dias',
-    text: 'O melhor investimento que fiz! Consegui entrar no vestido do Carnaval que tinha desistido. Minhas amigas não acreditaram na transformação.',
+    result: 'Faturou R$5.200 em 3 semanas',
+    text: 'Saí do zero absoluto e hoje tenho minha renda extra garantida. Melhor investimento que fiz na minha vida!',
   },
   {
-    photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
-    name: 'Juliana R.',
+    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face',
+    name: 'Carlos R.',
     location: 'Belo Horizonte, MG',
-    result: 'Perdeu 3,8kg em 10 dias',
-    text: 'Finalmente um método que funciona de verdade! Sem passar fome, sem treinos loucos. O cronograma de chás fez toda diferença.',
+    result: 'Faturou R$12.000 em 2 meses',
+    text: 'Largei meu emprego CLT depois de 3 meses. Hoje trabalho de casa e ganho 3x mais. Gratidão eterna!',
   },
 ];
 
@@ -30,10 +30,10 @@ export function TestimonialsSection() {
       <div className="container max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
-            Mulheres <span className="text-primary">Transformadas</span>
+            Alunos <span className="text-primary">Faturando</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Veja os resultados reais de quem seguiu o protocolo
+            Veja os resultados reais de quem seguiu o método
           </p>
         </div>
 
@@ -50,7 +50,6 @@ export function TestimonialsSection() {
 
               {/* Header */}
               <div className="flex items-start gap-4 mb-4">
-                {/* Avatar Photo */}
                 <img 
                   src={testimonial.photo} 
                   alt={testimonial.name}
@@ -60,15 +59,15 @@ export function TestimonialsSection() {
                 <div>
                   <div className="flex items-center gap-2">
                     <h4 className="font-bold text-foreground text-lg">{testimonial.name}</h4>
-                    <CheckCircle className="h-4 w-4 text-lime fill-lime" />
+                    <CheckCircle className="h-4 w-4 text-green-check fill-green-check" />
                   </div>
                   <p className="text-sm text-muted-foreground">{testimonial.location}</p>
                 </div>
               </div>
 
               {/* Result Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-lime/20 text-lime-dark rounded-full text-sm font-bold mb-4">
-                <Sparkles className="h-4 w-4 text-lime" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-bold mb-4">
+                <Sparkles className="h-4 w-4 text-accent" />
                 {testimonial.result}
               </div>
               
@@ -80,7 +79,7 @@ export function TestimonialsSection() {
               {/* Stars */}
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-lime fill-lime" />
+                  <Star key={i} className="h-5 w-5 text-accent fill-accent" />
                 ))}
               </div>
             </div>
