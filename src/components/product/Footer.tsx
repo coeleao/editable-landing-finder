@@ -5,10 +5,10 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="text-lg font-black mb-4">
-              GUIA<span className="text-accent">FIT</span>
+              RENDA<span className="text-accent">EXTRA</span>
             </h3>
             <p className="text-background/70 text-sm">
-              Transformando vidas através de uma alimentação saudável e equilibrada.
+              Transformando vidas através do empreendedorismo digital.
             </p>
           </div>
 
@@ -33,10 +33,10 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <a 
-                  href="mailto:contato@guiafit.com.br" 
+                  href="mailto:contato@rendaextra.com.br" 
                   className="text-background/70 hover:text-background text-sm transition-colors"
                 >
-                  contato@guiafit.com.br
+                  contato@rendaextra.com.br
                 </a>
               </li>
               <li>
@@ -53,10 +53,10 @@ export function Footer() {
 
         <div className="border-t border-background/20 pt-8 text-center">
           <p className="text-sm text-background/50">
-            © {new Date().getFullYear()} GuiaFit. Todos os direitos reservados.
+            © {new Date().getFullYear()} RendaExtra. Todos os direitos reservados.
           </p>
           <p className="text-xs text-background/40 mt-2">
-            Este produto não substitui acompanhamento médico ou nutricional.
+            Este produto não garante resultados. Resultados variam de acordo com o esforço individual.
           </p>
         </div>
       </div>

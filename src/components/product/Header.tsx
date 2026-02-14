@@ -10,7 +10,7 @@ export function Header() {
       <div className="container max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <a href="#" className="text-xl font-black text-foreground">
-            GUIA<span className="text-accent">FIT</span>
+            RENDA<span className="text-accent">EXTRA</span>
           </a>
           
           <nav className="hidden md:flex items-center gap-8">
