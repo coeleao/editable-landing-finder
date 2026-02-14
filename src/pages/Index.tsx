@@ -9,6 +9,7 @@ import { OfferSection } from '@/components/product/OfferSection';
 import { GuaranteeSection } from '@/components/product/GuaranteeSection';
 import { FAQSection } from '@/components/product/FAQSection';
 import { Footer } from '@/components/product/Footer';
+import { PurchasePopup } from '@/components/product/PurchasePopup';
 import bgCarnival from '@/assets/bg-carnival.png';
 
 export default function Index() {
@@ -39,6 +40,7 @@ export default function Index() {
         <FAQSection />
         <Footer />
       </div>
+      <PurchasePopup />
     </div>
   );
 }
