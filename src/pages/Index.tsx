@@ -123,7 +123,7 @@ export default function Index() {
         <div className="flex items-center gap-4 mt-3 text-xs text-muted-foreground">
           <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> 30-45 min</span>
           <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" /> 2.3 km</span>
-          <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">Aberto</span>
+          <span className="bg-accent/10 text-accent px-2 py-0.5 rounded-full font-semibold">Aberto</span>
           <span className="ml-auto text-primary font-semibold">Entrega grátis</span>
         </div>
       </div>
