@@ -197,7 +197,7 @@ function MenuItem({ item }: { item: typeof menuItems[0] }) {
           {item.badge && (
             <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 ${
               item.badge === 'Mais Pedido' ? 'bg-primary/10 text-primary' :
-              item.badge === 'Novo' ? 'bg-green-100 text-green-700' :
+              item.badge === 'Novo' ? 'bg-accent/10 text-accent' :
               'bg-accent/10 text-accent'
             }`}>
               {item.badge}
