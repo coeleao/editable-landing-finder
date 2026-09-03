@@ -1,5 +1,8 @@
 import { useState, useRef } from 'react';
-import { Star, Clock, MapPin, Search, ChevronLeft, Heart } from 'lucide-react';
+import { Star, Clock, MapPin, Search, ChevronLeft, Heart, ShoppingBag } from 'lucide-react';
+import { useCart } from '@/hooks/useCart';
+import { CartDrawer } from '@/components/cart/CartDrawer';
+import { PixCheckoutDialog } from '@/components/cart/PixCheckoutDialog';
 
 import bannerImg from '@/assets/restaurant-banner.jpg';
 import logoImg from '@/assets/restaurant-logo.png';
@@ -70,6 +73,9 @@ export default function Index() {
   const [activeCategory, setActiveCategory] = useState('destaques');
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const { count, total, add } = useCart();
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const handleCategoryClick = (id: string) => {
@@ -185,44 +191,80 @@ export default function Index() {
           ))
         )}
       </div>
+
+      {/* Floating cart bar */}
+      {count > 0 && (
+        <div className="fixed bottom-0 left-0 right-0 z-30 pointer-events-none">
+          <div className="max-w-md mx-auto p-3 pointer-events-auto">
+            <button
+              onClick={() => setCartOpen(true)}
+              className="w-full h-14 bg-primary text-primary-foreground rounded-2xl shadow-2xl flex items-center justify-between px-5 font-bold hover:brightness-110 transition"
+            >
+              <span className="flex items-center gap-2">
+                <span className="relative">
+                  <ShoppingBag className="w-5 h-5" />
+                  <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">
+                    {count}
+                  </span>
+                </span>
+                Ver sacola
+              </span>
+              <span>R$ {total.toFixed(2).replace('.', ',')}</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      <CartDrawer
+        open={cartOpen}
+        onOpenChange={setCartOpen}
+        onCheckout={() => {
+          setCartOpen(false);
+          setCheckoutOpen(true);
+        }}
+      />
+      <PixCheckoutDialog open={checkoutOpen} onOpenChange={setCheckoutOpen} />
     </div>
   );
-}
 
-function MenuItem({ item }: { item: typeof menuItems[0] }) {
-  return (
-    <div className="bg-card rounded-2xl overflow-hidden flex shadow-sm border border-border hover:shadow-md transition-shadow">
-      <div className="flex-1 p-3 flex flex-col justify-between">
-        <div>
-          {item.badge && (
-            <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 ${
-              item.badge === 'Mais Pedido' ? 'bg-primary/10 text-primary' :
-              item.badge === 'Novo' ? 'bg-accent/10 text-accent' :
-              'bg-accent/10 text-accent'
-            }`}>
-              {item.badge}
+  function MenuItem({ item }: { item: typeof menuItems[0] }) {
+    return (
+      <div className="bg-card rounded-2xl overflow-hidden flex shadow-sm border border-border hover:shadow-md transition-shadow">
+        <div className="flex-1 p-3 flex flex-col justify-between">
+          <div>
+            {item.badge && (
+              <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 ${
+                item.badge === 'Mais Pedido' ? 'bg-primary/10 text-primary' :
+                item.badge === 'Novo' ? 'bg-accent/10 text-accent' :
+                'bg-accent/10 text-accent'
+              }`}>
+                {item.badge}
+              </span>
+            )}
+            <h3 className="font-semibold text-sm text-foreground leading-tight">{item.name}</h3>
+            <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{item.description}</p>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <span className="text-sm font-bold text-primary">
+              R$ {item.price.toFixed(2).replace('.', ',')}
             </span>
-          )}
-          <h3 className="font-semibold text-sm text-foreground leading-tight">{item.name}</h3>
-          <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{item.description}</p>
+            {item.originalPrice && (
+              <span className="text-xs text-muted-foreground line-through">
+                R$ {item.originalPrice.toFixed(2).replace('.', ',')}
+              </span>
+            )}
+          </div>
         </div>
-        <div className="flex items-center gap-2 mt-2">
-          <span className="text-sm font-bold text-primary">
-            R$ {item.price.toFixed(2).replace('.', ',')}
-          </span>
-          {item.originalPrice && (
-            <span className="text-xs text-muted-foreground line-through">
-              R$ {item.originalPrice.toFixed(2).replace('.', ',')}
-            </span>
-          )}
+        <div className="w-28 h-28 relative flex-shrink-0">
+          <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" width={512} height={512} />
+          <button
+            onClick={() => add({ id: item.id, name: item.name, price: item.price, image: item.image })}
+            className="absolute bottom-2 right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-lg font-bold shadow-lg hover:scale-110 transition-transform"
+            aria-label={`Adicionar ${item.name}`}
+          >
+            +
+          </button>
         </div>
       </div>
-      <div className="w-28 h-28 relative flex-shrink-0">
-        <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" width={512} height={512} />
-        <button className="absolute bottom-2 right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-lg font-bold shadow-lg hover:scale-110 transition-transform">
-          +
-        </button>
-      </div>
-    </div>
   );
 }
