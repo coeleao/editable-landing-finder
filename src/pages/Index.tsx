@@ -1,5 +1,8 @@
 import { useState, useRef } from 'react';
-import { Star, Clock, MapPin, Search, ChevronLeft, Heart } from 'lucide-react';
+import { Star, Clock, MapPin, Search, ChevronLeft, Heart, ShoppingBag } from 'lucide-react';
+import { useCart } from '@/hooks/useCart';
+import { CartDrawer } from '@/components/cart/CartDrawer';
+import { PixCheckoutDialog } from '@/components/cart/PixCheckoutDialog';
 
 import bannerImg from '@/assets/restaurant-banner.jpg';
 import logoImg from '@/assets/restaurant-logo.png';
