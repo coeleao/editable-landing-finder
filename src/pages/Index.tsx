@@ -73,6 +73,9 @@ export default function Index() {
   const [activeCategory, setActiveCategory] = useState('destaques');
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const { count, total, add } = useCart();
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const handleCategoryClick = (id: string) => {
