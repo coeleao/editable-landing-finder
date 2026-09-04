@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { Star, Clock, MapPin, Search, ChevronLeft, Heart, ShoppingBag } from 'lucide-react';
+import { useState, useRef, useMemo } from 'react';
+import { Star, Clock, MapPin, Search, ChevronLeft, Heart, ShoppingBag, Tag, Truck } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
 import { CartDrawer } from '@/components/cart/CartDrawer';
 import { PixCheckoutDialog } from '@/components/cart/PixCheckoutDialog';
@@ -22,50 +22,52 @@ const categories = [
   { id: 'combos', label: '🎯 Combos' },
 ];
 
+type BadgeType = 'MAIS VENDIDO' | 'OFERTA DO DIA' | 'ÚLTIMAS UNIDADES' | 'Novo' | 'Mais Pedido' | 'Economia';
+
 const menuItems = [
   {
     id: 1, category: 'destaques', name: 'Smash Burger Duplo', description: 'Dois smash de carne 90g, cheddar, bacon crocante, picles e molho especial no brioche.',
-    price: 32.90, originalPrice: 39.90, image: burgerClassic, badge: 'Mais Pedido',
+    price: 18.90, originalPrice: 32.90, image: burgerClassic, badge: 'MAIS VENDIDO' as BadgeType,
   },
   {
     id: 2, category: 'destaques', name: 'Combo Família', description: '4 Smash Burgers + 2 Batatas Grandes + 4 Refrigerantes.',
-    price: 99.90, originalPrice: 139.90, image: burgerBacon, badge: 'Economia',
+    price: 45.90, originalPrice: 89.90, image: burgerBacon, badge: 'OFERTA DO DIA' as BadgeType,
   },
   {
     id: 3, category: 'burgers', name: 'Classic Smash', description: 'Smash 120g, queijo americano, alface, tomate e maionese da casa.',
-    price: 24.90, image: burgerClassic,
+    price: 14.90, originalPrice: 24.90, image: burgerClassic, badge: 'ÚLTIMAS UNIDADES' as BadgeType,
   },
   {
     id: 4, category: 'burgers', name: 'Chicken Crispy', description: 'Frango empanado crocante, coleslaw, picles e molho ranch.',
-    price: 28.90, image: burgerChicken,
+    price: 19.90, originalPrice: 28.90, image: burgerChicken, badge: 'MAIS VENDIDO' as BadgeType,
   },
   {
     id: 5, category: 'burgers', name: 'Bacon BBQ', description: 'Triplo smash, bacon, cebola caramelizada, cheddar e molho BBQ.',
-    price: 36.90, image: burgerBacon, badge: 'Novo',
+    price: 24.90, originalPrice: 36.90, image: burgerBacon, badge: 'Novo' as BadgeType,
   },
   {
     id: 6, category: 'acompanhamentos', name: 'Batata Frita', description: 'Porção generosa de batatas fritas crocantes com ketchup.',
-    price: 14.90, image: friesImg,
+    price: 9.90, originalPrice: 14.90, image: friesImg, badge: 'OFERTA DO DIA' as BadgeType,
   },
   {
     id: 7, category: 'acompanhamentos', name: 'Onion Rings', description: 'Anéis de cebola empanados e crocantes.',
-    price: 16.90, image: onionRingsImg,
+    price: 11.90, originalPrice: 16.90, image: onionRingsImg, badge: 'MAIS VENDIDO' as BadgeType,
   },
   {
     id: 8, category: 'bebidas', name: 'Milkshake Chocolate', description: 'Milkshake cremoso de chocolate com chantilly.',
-    price: 18.90, image: milkshakeImg,
+    price: 12.90, originalPrice: 18.90, image: milkshakeImg,
   },
   {
     id: 9, category: 'bebidas', name: 'Refrigerante 500ml', description: 'Coca-Cola, Guaraná ou Fanta.',
-    price: 8.90, image: sodaImg,
+    price: 6.90, originalPrice: 8.90, image: sodaImg, badge: 'ÚLTIMAS UNIDADES' as BadgeType,
   },
   {
     id: 10, category: 'combos', name: 'Combo Classic', description: 'Classic Smash + Batata Média + Refri 500ml.',
-    price: 39.90, originalPrice: 48.70, image: burgerClassic, badge: 'Economia',
+    price: 24.90, originalPrice: 42.70, image: burgerClassic, badge: 'OFERTA DO DIA' as BadgeType,
   },
   {
     id: 11, category: 'combos', name: 'Combo Bacon BBQ', description: 'Bacon BBQ + Onion Rings + Milkshake.',
-    price: 59.90, originalPrice: 72.70, image: burgerBacon, badge: 'Mais Pedido',
+    price: 35.90, originalPrice: 62.70, image: burgerBacon, badge: 'MAIS VENDIDO' as BadgeType,
   },
 ];
 
@@ -77,6 +79,12 @@ export default function Index() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const { count, total, add } = useCart();
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  const statusText = useMemo(() => {
+    const hour = new Date().getHours();
+    const isOpen = hour >= 10 && hour < 23;
+    return isOpen ? '🟢 Aberto agora • Entrega em 30-45 min' : '🔴 Fechado • Abre amanhã às 10h';
+  }, []);
 
   const handleCategoryClick = (id: string) => {
     setActiveCategory(id);
@@ -94,19 +102,25 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background max-w-md mx-auto relative">
+      {/* Promo banner */}
+      <div className="bg-accent text-accent-foreground px-4 py-2.5 text-center text-xs font-bold flex items-center justify-center gap-2">
+        <Tag className="w-3.5 h-3.5" />
+        <span>Cupom de Primeiro Pedido: FRETE GRÁTIS a partir de R$ 30</span>
+      </div>
+
       {/* Banner */}
       <div className="relative h-48">
         <img src={bannerImg} alt="Banner" className="w-full h-full object-cover" width={1200} height={512} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute top-4 left-4 right-4 flex justify-between items-center">
-          <button className="w-9 h-9 bg-white/90 rounded-full flex items-center justify-center shadow">
+          <button className="w-9 h-9 bg-white/95 rounded-full flex items-center justify-center shadow">
             <ChevronLeft className="w-5 h-5 text-foreground" />
           </button>
           <div className="flex gap-2">
-            <button onClick={() => setSearchOpen(!searchOpen)} className="w-9 h-9 bg-white/90 rounded-full flex items-center justify-center shadow">
+            <button onClick={() => setSearchOpen(!searchOpen)} className="w-9 h-9 bg-white/95 rounded-full flex items-center justify-center shadow">
               <Search className="w-5 h-5 text-foreground" />
             </button>
-            <button className="w-9 h-9 bg-white/90 rounded-full flex items-center justify-center shadow">
+            <button className="w-9 h-9 bg-white/95 rounded-full flex items-center justify-center shadow">
               <Heart className="w-5 h-5 text-foreground" />
             </button>
           </div>
@@ -114,23 +128,28 @@ export default function Index() {
       </div>
 
       {/* Restaurant Info */}
-      <div className="bg-card rounded-t-3xl -mt-6 relative z-10 px-4 pt-4 pb-3">
+      <div className="bg-card rounded-t-3xl -mt-8 relative z-10 px-4 pt-4 pb-3 shadow-lg">
         <div className="flex items-center gap-3">
-          <img src={logoImg} alt="Logo" className="w-14 h-14 rounded-full border-2 border-card shadow-md object-cover" width={512} height={512} />
+          <img src={logoImg} alt="Logo" className="w-16 h-16 rounded-full border-4 border-card shadow-lg object-cover" width={512} height={512} />
           <div className="flex-1">
-            <h1 className="text-lg font-bold text-foreground">Smash & Co. Burger</h1>
+            <h1 className="text-lg font-extrabold text-foreground leading-tight">Smash & Co. Burger</h1>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Star className="w-4 h-4 fill-accent text-accent" />
-              <span className="font-semibold text-foreground">4.8</span>
-              <span>• Hamburgueria</span>
+              <span className="font-bold text-foreground">4.8</span>
+              <span className="text-xs">• Hamburgueria</span>
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-4 mt-3 text-xs text-muted-foreground">
+        <div className="flex items-center gap-3 mt-3 text-xs text-muted-foreground">
           <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> 30-45 min</span>
           <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" /> 2.3 km</span>
-          <span className="bg-accent/10 text-accent px-2 py-0.5 rounded-full font-semibold">Aberto</span>
-          <span className="ml-auto text-primary font-semibold">Entrega grátis</span>
+          <span className="ml-auto text-green-600 font-bold flex items-center gap-1 bg-green-50 px-2 py-1 rounded-full">
+            <Truck className="w-3.5 h-3.5" />
+            Grátis
+          </span>
+        </div>
+        <div className="mt-3 text-xs font-semibold text-green-600 bg-green-50 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full">
+          {statusText}
         </div>
       </div>
 
@@ -143,7 +162,7 @@ export default function Index() {
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
             autoFocus
-            className="w-full h-10 bg-secondary rounded-xl px-4 text-sm placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-primary/30"
+            className="w-full h-11 bg-secondary rounded-xl px-4 text-sm placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-primary/30"
           />
         </div>
       )}
@@ -155,7 +174,7 @@ export default function Index() {
             <button
               key={cat.id}
               onClick={() => handleCategoryClick(cat.id)}
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold transition-all ${
                 activeCategory === cat.id
                   ? 'bg-primary text-primary-foreground shadow-sm'
                   : 'bg-secondary text-muted-foreground hover:bg-muted'
@@ -168,9 +187,9 @@ export default function Index() {
       </div>
 
       {/* Menu Content */}
-      <div className="px-4 pb-24 pt-2">
+      <div className="px-3 pb-28 pt-3">
         {filteredItems ? (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {filteredItems.length === 0 && (
               <p className="text-center text-muted-foreground py-10 text-sm">Nenhum item encontrado.</p>
             )}
@@ -181,8 +200,8 @@ export default function Index() {
         ) : (
           groupedCategories.map(cat => (
             <div key={cat.id} ref={el => { sectionRefs.current[cat.id] = el; }} className="mb-6">
-              <h2 className="text-base font-bold text-foreground mb-3 pt-2">{cat.label}</h2>
-              <div className="space-y-3">
+              <h2 className="text-base font-extrabold text-foreground mb-3 pt-2">{cat.label}</h2>
+              <div className="space-y-4">
                 {cat.items.map(item => (
                   <MenuItem key={item.id} item={item} />
                 ))}
@@ -229,37 +248,35 @@ export default function Index() {
 
   function MenuItem({ item }: { item: typeof menuItems[0] }) {
     return (
-      <div className="bg-card rounded-2xl overflow-hidden flex shadow-sm border border-border hover:shadow-md transition-shadow">
-        <div className="flex-1 p-3 flex flex-col justify-between">
+      <div className="bg-card rounded-2xl overflow-hidden flex shadow-md border border-border hover:shadow-lg transition-shadow">
+        <div className="flex-1 p-3.5 flex flex-col justify-between">
           <div>
             {item.badge && (
-              <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 ${
-                item.badge === 'Mais Pedido' ? 'bg-primary/10 text-primary' :
-                item.badge === 'Novo' ? 'bg-accent/10 text-accent' :
-                'bg-accent/10 text-accent'
-              }`}>
+              <span className={`inline-block text-[10px] font-extrabold uppercase tracking-wide px-2 py-0.5 rounded-full mb-1.5 ${getBadgeStyle(item.badge)}`}>
                 {item.badge}
               </span>
             )}
-            <h3 className="font-semibold text-sm text-foreground leading-tight">{item.name}</h3>
-            <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{item.description}</p>
+            <h3 className="font-bold text-sm text-foreground leading-tight">{item.name}</h3>
+            <p className="text-xs text-muted-foreground mt-1.5 line-clamp-2">{item.description}</p>
           </div>
-          <div className="flex items-center gap-2 mt-2">
-            <span className="text-sm font-bold text-primary">
-              R$ {item.price.toFixed(2).replace('.', ',')}
-            </span>
-            {item.originalPrice && (
-              <span className="text-xs text-muted-foreground line-through">
-                R$ {item.originalPrice.toFixed(2).replace('.', ',')}
+          <div className="flex items-end gap-2 mt-3">
+            <div className="flex flex-col">
+              {item.originalPrice && (
+                <span className="text-xs text-destructive line-through font-medium">
+                  R$ {item.originalPrice.toFixed(2).replace('.', ',')}
+                </span>
+              )}
+              <span className="text-base font-extrabold text-primary">
+                R$ {item.price.toFixed(2).replace('.', ',')}
               </span>
-            )}
+            </div>
           </div>
         </div>
-        <div className="w-28 h-28 relative flex-shrink-0">
+        <div className="w-32 h-32 relative flex-shrink-0">
           <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" width={512} height={512} />
           <button
             onClick={() => add({ id: item.id, name: item.name, price: item.price, image: item.image })}
-            className="absolute bottom-2 right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-lg font-bold shadow-lg hover:scale-110 transition-transform"
+            className="absolute bottom-2 right-2 w-9 h-9 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-lg font-extrabold shadow-lg ring-2 ring-white hover:scale-110 active:scale-95 transition-transform"
             aria-label={`Adicionar ${item.name}`}
           >
             +
@@ -270,3 +287,19 @@ export default function Index() {
   }
 }
 
+function getBadgeStyle(badge: BadgeType) {
+  switch (badge) {
+    case 'MAIS VENDIDO':
+      return 'bg-primary/10 text-primary';
+    case 'OFERTA DO DIA':
+      return 'bg-accent/15 text-amber-700';
+    case 'ÚLTIMAS UNIDADES':
+      return 'bg-destructive/10 text-destructive';
+    case 'Novo':
+      return 'bg-green-100 text-green-700';
+    case 'Economia':
+      return 'bg-blue-100 text-blue-700';
+    default:
+      return 'bg-accent/10 text-accent';
+  }
+}
