@@ -20,7 +20,7 @@ interface Payload {
 
 function badRequest(msg: string) {
   return new Response(JSON.stringify({ error: msg }), {
-    status: 400,
+    status: 200,
     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   });
 }
@@ -107,7 +107,7 @@ Deno.serve(async (req) => {
       console.error('MP error', mpData);
       await supabase.from('orders').update({ status: 'failed' }).eq('id', order.id);
       return new Response(JSON.stringify({ error: mpData?.message ?? 'Erro no Mercado Pago', details: mpData }), {
-        status: 500,
+        status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
