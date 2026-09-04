@@ -14,6 +14,7 @@ interface Payload {
     name: string;
     email: string;
     phone?: string;
+    cpf: string;
   };
 }
 
@@ -32,11 +33,18 @@ Deno.serve(async (req) => {
     if (!body?.items?.length) return badRequest('Carrinho vazio');
     if (!body.customer?.name || !body.customer?.email) return badRequest('Dados do cliente obrigatórios');
 
+    const cpf = String(body.customer.cpf ?? '').replace(/\D/g, '');
+    if (cpf.length !== 11) return badRequest('CPF inválido. Informe os 11 dígitos.');
+
     const total = body.items.reduce((sum, i) => sum + Number(i.price) * Number(i.quantity), 0);
     if (total <= 0) return badRequest('Valor inválido');
 
-    const mpToken = Deno.env.get('MERCADO_PAGO_ACCESS_TOKEN');
-    if (!mpToken) return badRequest('MERCADO_PAGO_ACCESS_TOKEN não configurado');
+    const mpToken = Deno.env.get('MERCADO_PAGO_ACCESS_TOKEN')?.trim();
+    if (!mpToken) {
+      console.error('MERCADO_PAGO_ACCESS_TOKEN ausente no ambiente da função');
+      return badRequest('MERCADO_PAGO_ACCESS_TOKEN não configurado');
+    }
+    console.log('MP token carregado, prefixo:', mpToken.slice(0, 5));
 
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
@@ -86,6 +94,10 @@ Deno.serve(async (req) => {
           email: body.customer.email,
           first_name: firstName,
           last_name: lastName,
+          identification: {
+            type: 'CPF',
+            number: cpf,
+          },
         },
       }),
     });

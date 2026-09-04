@@ -19,6 +19,14 @@ interface PixData {
   total: number;
 }
 
+const formatCpf = (v: string) =>
+  v
+    .replace(/\D/g, '')
+    .slice(0, 11)
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3')
+    .replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+
 const brl = (n: number) => `R$ ${n.toFixed(2).replace('.', ',')}`;
 
 export function PixCheckoutDialog({ open, onOpenChange }: Props) {
@@ -27,6 +35,7 @@ export function PixCheckoutDialog({ open, onOpenChange }: Props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [cpf, setCpf] = useState('');
   const [loading, setLoading] = useState(false);
   const [pix, setPix] = useState<PixData | null>(null);
   const [copied, setCopied] = useState(false);
@@ -68,10 +77,15 @@ export function PixCheckoutDialog({ open, onOpenChange }: Props) {
       toast({ title: 'Preencha nome e e-mail', variant: 'destructive' });
       return;
     }
+    const cpfDigits = cpf.replace(/\D/g, '');
+    if (cpfDigits.length !== 11) {
+      toast({ title: 'CPF inválido', description: 'Informe os 11 dígitos do CPF.', variant: 'destructive' });
+      return;
+    }
     setLoading(true);
     try {
       const payload = {
-        customer: { name, email, phone },
+        customer: { name, email, phone, cpf: cpfDigits },
         items: items.map((i: CartItem) => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity })),
       };
       const { data, error } = await supabase.functions.invoke('create-pix-payment', { body: payload });
@@ -118,6 +132,13 @@ export function PixCheckoutDialog({ open, onOpenChange }: Props) {
               placeholder="E-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              inputMode="numeric"
+              className="w-full h-11 px-3 rounded-lg bg-secondary text-sm outline-none focus:ring-2 focus:ring-primary/30"
+              placeholder="CPF (obrigatório para o PIX)"
+              value={cpf}
+              onChange={(e) => setCpf(formatCpf(e.target.value))}
             />
             <input
               className="w-full h-11 px-3 rounded-lg bg-secondary text-sm outline-none focus:ring-2 focus:ring-primary/30"
