@@ -13,6 +13,7 @@ interface Props {
 
 interface PixData {
   order_id: string;
+  access_token: string;
   qr_code: string;
   qr_code_base64: string;
   ticket_url: string;
@@ -48,29 +49,28 @@ export function PixCheckoutDialog({ open, onOpenChange }: Props) {
     }
   }, [open]);
 
-  // Realtime: escuta mudança de status do pedido
+  // Consulta segura de status (sem expor dados do pedido no cliente)
   useEffect(() => {
-    if (!pix?.order_id) return;
-    const channel = supabase
-      .channel(`order-${pix.order_id}`)
-      .on(
-        'postgres_changes',
-        { event: 'UPDATE', schema: 'public', table: 'orders', filter: `id=eq.${pix.order_id}` },
-        (payload) => {
-          const status = (payload.new as { status: string }).status;
-          if (status === 'paid') {
-            setStep('paid');
-            clear();
-          } else if (status === 'failed' || status === 'expired') {
-            toast({ title: 'Pagamento não concluído', description: 'Tente novamente.', variant: 'destructive' });
-          }
-        },
-      )
-      .subscribe();
+    if (!pix?.order_id || step !== 'pix') return;
+    let cancelled = false;
+    const interval = setInterval(async () => {
+      const { data, error } = await supabase.functions.invoke('check-payment-status', {
+        body: { order_id: pix.order_id, access_token: pix.access_token },
+      });
+      if (cancelled || error || !data?.status) return;
+      if (data.status === 'paid') {
+        setStep('paid');
+        clear();
+      } else if (data.status === 'failed' || data.status === 'expired') {
+        clearInterval(interval);
+        toast({ title: 'Pagamento não concluído', description: 'Tente novamente.', variant: 'destructive' });
+      }
+    }, 5000);
     return () => {
-      supabase.removeChannel(channel);
+      cancelled = true;
+      clearInterval(interval);
     };
-  }, [pix?.order_id, clear]);
+  }, [pix?.order_id, pix?.access_token, step, clear]);
 
   async function generatePix() {
     if (!name || !email) {

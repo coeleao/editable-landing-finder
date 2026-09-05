@@ -133,6 +133,7 @@ Deno.serve(async (req) => {
     return new Response(
       JSON.stringify({
         order_id: order.id,
+        access_token: order.access_token,
         payment_id: mpData.id,
         qr_code: qrCode,
         qr_code_base64: qrBase64,
